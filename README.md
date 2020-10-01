@@ -1,1 +1,1 @@
-LastestPaper
+LatestPaper
