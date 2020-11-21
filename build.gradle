@@ -13,7 +13,9 @@ repositories {
 
 dependencies {
     // https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple
-    compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+    implementation ('com.googlecode.json-simple:json-simple:1.1.1') {
+        exclude group: "junit", module: 'junit'
+    }
 }
 
 jar {
@@ -21,7 +23,7 @@ jar {
         attributes 'Main-Class': 'com.jih10157.latestpaper.LatestPaper', 'Launcher-Agent-Class': 'com.jih10157.latestpaper.Agent'
     }
     from {
-        configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
     }
 }
 
