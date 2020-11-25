@@ -31,7 +31,7 @@ final class PaperAPI {
         return new Version(versions.get(0));
     }
 
-    public int getLatestPaperBuild(String v) throws IOException {
+    public long getLatestPaperBuild(String v) throws IOException {
         URL url = new URL(baseUrl + "/" + v);
         JSONObject object;
         try {
@@ -40,7 +40,7 @@ final class PaperAPI {
             e.printStackTrace();
             return 0;
         }
-        return Integer.parseInt((String) ((JSONObject) object.get("builds")).get("latest"));
+        return (Long) ((JSONObject) object.get("builds")).get("latest");
     }
 
     public static void downloadPaper(File target, String v) throws IOException {

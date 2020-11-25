@@ -29,7 +29,7 @@ public final class LatestPaper {
         int latestPaperBuild;
         try {
             latestVersion = paperAPI.getLatestPaperVersion();
-            latestPaperBuild = paperAPI.getLatestPaperBuild(latestVersion.toString());
+            latestPaperBuild = (int) paperAPI.getLatestPaperBuild(latestVersion.toString());
             if (paperClip != null) {
                 if (paperClip.getMCVersion().isSmallerThan(latestVersion)
                     || paperClip.getVersion() < latestPaperBuild) {
